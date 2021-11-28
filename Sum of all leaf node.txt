@@ -1,0 +1,8 @@
+function SumLeafNode(root){
+        if (root == null)
+            return;        
+        if (root.left == null && root.right == null)
+            sum += root.data;
+        SumLeafNode(root.left);
+        SumLeafNode(root.right);
+    }

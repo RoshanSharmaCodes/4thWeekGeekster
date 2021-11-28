@@ -1,0 +1,33 @@
+function CheckSubTree(rnode,snode,status){
+    if(!snode||!rnode){
+        return !snode&&!rnode;
+    }
+    else if(rnode.val===snode.val){
+        status  = CheckSubTree(rnode.left,snode.left) && CheckSubTree(rnode.right,snode.right)
+        return status;
+    }
+    else if(rnode.val!==snode.val){
+        return false;
+    }
+}
+
+
+var isSubtree = function(root, subRoot){
+    if(!root||!root){
+        return false;
+    }
+    if(CheckSubTree(root,subRoot,false)){
+        return true;
+    }
+    else{
+        return isSubtree(root.left,subRoot)|| isSubtree(root.right,subRoot)
+    }
+
+};
+    
+    
+    
+    
+    
+    
+    

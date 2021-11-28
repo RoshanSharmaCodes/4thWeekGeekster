@@ -1,0 +1,18 @@
+var rightSideView = function(root) {
+    var arr = [];
+    var maxlevel = 0;
+    function rightSide(node,level){
+        if(node===null) return;
+        
+        if(level>maxlevel){
+            arr.push(node.val);
+            maxlevel = level;
+        }
+        
+        rightSide(node.right,level+1);
+        rightSide(node.left,level+1);
+    }
+    
+    rightSide(root,1)
+    return arr;
+};

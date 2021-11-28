@@ -1,0 +1,17 @@
+var hasPathSum = function(root, targetSum) {
+    var sum = 0;
+    var res = false;
+    function findSum(node,sum){
+        if(node===null) return;
+        sum = sum + node.val
+        if(node.left===null&&node.right===null){
+            if(sum===targetSum){
+                res = true;
+            }
+        }
+        findSum(node.left,sum);
+        findSum(node.right,sum);
+    }
+    findSum(root,sum)
+    return res;
+};

@@ -1,0 +1,32 @@
+function getLeftMost (node) {
+    let left = node;
+    while(node.left) {
+        left = node.left;
+        node = left;
+    }
+    return left;
+}
+
+var deleteNode = function(root, key) {
+    function rec(node) {
+        if(!node)
+            return node;
+        
+        if(node.val == key) {
+            if(node.right !== null) {
+                let left = getLeftMost(node.right, node);
+                node.val = left.val;
+                node.right = deleteNode(node.right, left.val);
+            } else {
+                node = node.left;
+            }
+            return node;
+        } if (key < node.val) {
+            node.left = rec(node.left);
+        } else {
+            node.right = rec(node.right);
+        }
+        return node;
+    }
+    return rec(root);
+};

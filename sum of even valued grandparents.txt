@@ -1,0 +1,27 @@
+var sumEvenGrandparent = function(root) {
+    var sum=0;
+    function DFS(node,parent,gparent){
+        if(!node) return;
+        if(gparent&&gparent.val%2===0){
+            sum = sum + node.val;
+        }
+        
+        DFS(node.left,node,parent);
+        DFS(node.right,node,parent);
+    }
+    
+    DFS(root,parent=null,gparent=null);
+    return sum;
+};
+
+// var sumEvenGrandparent = function(root) {
+//     var sum=0;
+//     function SumOfAll(node,sum){
+//         if(!node.left.left||!node.right.right) return 1;
+//         sum = sum + (node.left.left.val + node.right.right.val);
+//         SumOfAll(node.left,sum);
+//         SumOfAll(node.right,sum);
+//     }
+//     SumOfAll(root,sum)
+//     return sum;
+// };

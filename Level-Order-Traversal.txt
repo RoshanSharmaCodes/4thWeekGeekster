@@ -1,0 +1,18 @@
+var q = [];
+var ans = [];
+var final = [];
+var levelOrder = function(root) {
+    if(!root) return [];
+    q.push(root);
+    while(q.length){
+        ans = [];
+        while(q.length){
+        var node = q.shift();
+        ans.push(node.val);    
+        }
+        final.push(ans);
+        if(node.left) q.push(node.left);
+        if(node.right) q.push(node.right);
+    }
+    return final;
+};

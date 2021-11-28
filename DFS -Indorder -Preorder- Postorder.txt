@@ -1,0 +1,42 @@
+
+    DFSPreorder(){
+      var node = this.root;
+      var data = [];
+      function traverse(node){
+        data.push(node.value);
+        if(node.left) traverse(node.left);
+        if(node.right) traverse(node.right);
+      }
+      traverse(node);
+      console.log(data);
+      return data;
+    }
+    
+     DFSInorder(){
+      var node = this.root;
+      var data = [];
+      function traverse(node){
+        if(node.left) traverse(node.left);
+        data.push(node.value);
+        if(node.right) traverse(node.right);
+      }
+      traverse(node);
+      console.log(data);
+      return data;
+    }
+    
+    
+     DFSPostorder(){
+      var node = this.root;
+      var data = [];
+      function traverse(node){
+        if(node.left) traverse(node.left);
+        if(node.right) traverse(node.right);
+        data.push(node.value);
+      }
+      traverse(node);
+      console.log(data);
+      return data;
+    }
+
+}
